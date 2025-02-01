@@ -97,9 +97,18 @@
                     selectedDate = info.startStr; // Store the selected date
                     alert(`You selected: ${selectedDate}`);
                     bookAppointmentBtn.disabled = false; // Enable the "Book Appointment" button
+                },
+                dateClick: function (info) {
+                    selectedDate = info.dateStr; // Store the selected date on mobile
+                    alert(`You selected: ${selectedDate}`);
+                    bookAppointmentBtn.disabled = false; // Enable the "Book Appointment" button
                 }
             });
-            calendar.render();
+
+            // حل مشكلة تعليق التقويم عند التشغيل
+            setTimeout(() => {
+                calendar.render();
+            }, 500);
 
             // Handle Booking Button
             bookAppointmentBtn.addEventListener('click', function () {
