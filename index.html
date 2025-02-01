@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script> <!-- FullCalendar Library -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script> <!-- EmailJS Library -->
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome to My Personal Website</h1>
+        <p>Osama Alsaab | Cyber Security</p>
+    </header>
+
+    <!-- Contact Information Section -->
+    <section class="contact-info">
+        <h2>Contact Me</h2>
+        <ul>
+            <li><strong>Name:</strong> Osama Alssaab</li>
+            <li><strong>Email:</strong> o.alssaab@gmail.com</li>
+            <li><strong>Phone:</strong> <a href="tel:+966555615622">+966 555 615 622</a></li>
+            <li><strong>LinkedIn:</strong> <a href="http://linkedin.com/in/osama-alsaab-291137320" target="_blank">osama alsaab</a></li>
+        </ul>
+    </section>
+
+    <!-- Guest Details Form -->
+    <section class="guest-details">
+        <h2>Enter Your Details</h2>
+        <form id="guestForm">
+            <label for="guestName">Name:</label>
+            <input type="text" id="guestName" placeholder="Your Name" required>
+
+            <label for="guestEmail">Email:</label>
+            <input type="email" id="guestEmail" placeholder="Your Email" required>
+
+            <button type="submit">Submit Details</button>
+        </form>
+    </section>
+
+    <!-- Appointment Calendar Section -->
+    <section class="appointment-section" style="display: none;">
+        <h2>Book an Appointment</h2>
+        <div id="calendar"></div>
+        <button id="bookAppointmentBtn" disabled>Book Appointment</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Osama Alssaab. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Calendar and Email Integration -->
+    <script>
+        // Initialize EmailJS with your public key
+        emailjs.init('iqyux0wikK-Gtz5-A'); // Replace with your actual Public Key
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const guestForm = document.getElementById('guestForm');
+            const appointmentSection = document.querySelector('.appointment-section');
+            const bookAppointmentBtn = document.getElementById('bookAppointmentBtn');
+            let selectedDate = null;
+            let guestName = '';
+            let guestEmail = '';
+
+            // Handle Guest Form Submission
+            guestForm.addEventListener('submit', function (e) {
+                e.preventDefault(); // Prevent form from refreshing the page
+
+                // Get guest details
+                guestName = document.getElementById('guestName').value.trim();
+                guestEmail = document.getElementById('guestEmail').value.trim();
+
+                if (guestName && guestEmail) {
+                    alert(`Thank you, ${guestName}! You can now book an appointment.`);
+                    appointmentSection.style.display = 'block'; // Show the calendar section
+                } else {
+                    alert('Please fill in both your name and email.');
+                    return; // Stop further execution if fields are empty
+                }
+            });
+
+            // Initialize FullCalendar
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [], // You can preload events here if needed
+                selectable: true,
+                select: function (info) {
+                    selectedDate = info.startStr; // Store the selected date
+                    alert(`You selected: ${selectedDate}`);
+                    bookAppointmentBtn.disabled = false; // Enable the "Book Appointment" button
+                }
+            });
+            calendar.render();
+
+            // Handle Booking Button
+            bookAppointmentBtn.addEventListener('click', function () {
+                if (!selectedDate) {
+                    alert('Please select a date first!');
+                    return;
+                }
+
+                // Prepare email parameters
+                const templateParams = {
+                    to_email: 'o.alssaab@gmail.com', // Replace with your actual email
+                    date: selectedDate, // Selected date from the calendar
+                    name: guestName, // Guest's name
+                    email: guestEmail // Guest's email
+                };
+
+                // Send email using EmailJS
+                emailjs.send('service_pwvw7mx', 'template_wilaewa', templateParams) // Replace with your Service ID and Template ID
+                    .then(function (response) {
+                        console.log('Email sent successfully:', response);
+
+                        // Redirect to the thank-you page with appointment details as query parameters
+                        window.location.href = `thank-you.html?name=${encodeURIComponent(guestName)}&email=${encodeURIComponent(guestEmail)}&date=${encodeURIComponent(selectedDate)}`;
+                    }, function (error) {
+                        console.error('Failed to send email:', error);
+                        alert('Failed to book appointment. Please try again.');
+                    });
+            });
+        });
+    </script>
+</body>
+</html>

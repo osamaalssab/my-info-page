@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to CSS -->
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Thank You!</h1>
+        <p>Your appointment has been booked successfully.</p>
+    </header>
+
+    <!-- Appointment Details Section -->
+    <section class="appointment-details">
+        <h2>Appointment Details</h2>
+        <ul>
+            <li><strong>Name:</strong> <span id="guestName"></span></li>
+            <li><strong>Email:</strong> <span id="guestEmail"></span></li>
+            <li><strong>Date:</strong> <span id="appointmentDate"></span></li>
+        </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 O.Alssaab. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript to Display Appointment Details -->
+    <script>
+        // Get query parameters from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Extract appointment details from the URL
+        const guestName = urlParams.get('name');
+        const guestEmail = urlParams.get('email');
+        const appointmentDate = urlParams.get('date');
+
+        // Display the details on the page
+        document.getElementById('guestName').textContent = guestName || 'Not provided';
+        document.getElementById('guestEmail').textContent = guestEmail || 'Not provided';
+        document.getElementById('appointmentDate').textContent = appointmentDate || 'Not provided';
+    </script>
+</body>
+</html>

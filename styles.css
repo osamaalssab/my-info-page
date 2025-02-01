@@ -1,0 +1,156 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Riyadh_Skyline.jpg/1920px-Riyadh_Skyline.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    line-height: 1.6;
+    text-align: center;
+}
+
+header {
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.6);
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.contact-info {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    margin: 0 auto 2rem;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.contact-info h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info ul {
+    list-style: none;
+}
+
+.contact-info li {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.guest-details {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    margin: 0 auto 2rem;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.guest-details h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.guest-details label {
+    display: block;
+    margin: 1rem 0 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.guest-details input {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.guest-details button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.guest-details button:hover {
+    background-color: #ff9a8b;
+}
+
+.appointment-section {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    margin: 0 auto 2rem;
+    max-width: 800px;
+    border-radius: 10px;
+}
+
+#calendar {
+    margin: 1rem 0;
+    width: 100%;
+    height: 600px; /* Increased height for a bigger calendar */
+}
+
+#bookAppointmentBtn {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#bookAppointmentBtn:hover {
+    background-color: #ff9a8b;
+}
+
+.appointment-details {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    margin: 0 auto 2rem;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.appointment-details h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.appointment-details ul {
+    list-style: none;
+}
+
+.appointment-details li {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
