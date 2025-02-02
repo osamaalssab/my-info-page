@@ -20,12 +20,13 @@
             <li><strong>Name:</strong> <span id="guestName"></span></li>
             <li><strong>Email:</strong> <span id="guestEmail"></span></li>
             <li><strong>Date:</strong> <span id="appointmentDate"></span></li>
+            <li><strong>Time:</strong> <span id="appointmentTime"></span></li>
         </ul>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2023 O.Alssaab. All rights reserved.</p>
+        <p>&copy; 2025 Osama Alssaab. All rights reserved.</p>
     </footer>
 
     <!-- JavaScript to Display Appointment Details -->
@@ -37,11 +38,13 @@
         const guestName = urlParams.get('name');
         const guestEmail = urlParams.get('email');
         const appointmentDate = urlParams.get('date');
+        const appointmentTime = urlParams.get('time');
 
         // Display the details on the page
         document.getElementById('guestName').textContent = guestName || 'Not provided';
         document.getElementById('guestEmail').textContent = guestEmail || 'Not provided';
         document.getElementById('appointmentDate').textContent = appointmentDate || 'Not provided';
+        document.getElementById('appointmentTime').textContent = appointmentTime || 'Not provided';
     </script>
 </body>
 </html>
